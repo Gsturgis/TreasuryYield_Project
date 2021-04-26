@@ -37,7 +37,6 @@ def make_chart():
     plt.suptitle('Treasury Yield curve rates')
     plt.grid()
     plt.legend()
-    plt.show()
     plt.savefig('charts/Treasury_curve.png')
     
     
