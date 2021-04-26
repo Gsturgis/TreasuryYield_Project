@@ -1,6 +1,9 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import pandas as pd
+import matplotlib as mpl
+import matplotlib.pyplot as plt
 
 def webscraper():
 
@@ -24,7 +27,23 @@ def webscraper():
         CSVWriter = csv.writer(CSVfile)
         for ml in data_matrix:
             CSVWriter.writerow(ml)  
+            
+def make_chart():
+    df = pd.read_csv("Treasury_data.csv")
+    df.columns = ['Date','1 Mo','2 Mo','3 Mo','6 Mo','1 Yr','2 Yr','3 Yr','5 Yr','7 Yr','10 Yr','20 Yr','30 Yr']
+    fig = plt.figure(figsize=(16, 8))
+    plt.plot(df['Date'],df['5 Yr'], label='Year 5')
+    plt.plot(df['Date'],df['3 Yr'], label='Year 3')
+    plt.suptitle('Treasury Yield curve rates')
+    plt.grid()
+    plt.legend()
+    plt.show()
+    plt.savefig('charts/Treasury_curve.png')
+    
+    
+    
 
         
 if __name__ == '__main__':
     webscraper()
+    make_chart()
