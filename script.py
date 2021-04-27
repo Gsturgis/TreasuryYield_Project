@@ -40,6 +40,8 @@ def make_chart():
     plt.plot(df['Date'],df['20 Yr'], label='Year 20')
     plt.plot(df['Date'],df['30 Yr'], label='Year 30')
     plt.suptitle('Treasury Yield curve rates(Yearly)')
+    plt.xlabel('Dates')
+    plt.ylabel('Interest')
     plt.grid()
     plt.legend()
     plt.savefig('charts/Treasury_curve.png')
